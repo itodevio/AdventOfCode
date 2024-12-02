@@ -37,21 +37,21 @@ func ReadInput() ([]int, []int) {
 
 	for _, line := range strings.Split(string(file), "\n") {
 		if len(line) == 0 {
-			continue
+			break
 		}
+		lineNums := strings.Split(line, "   ")
 
-		nums := strings.Split(line, "   ")
-		l, err := strconv.Atoi(nums[0])
+		num, err := strconv.Atoi(lineNums[0])
 		if err != nil {
 			panic(err)
 		}
-		left = append(left, l)
+		left = append(left, num)
 
-		r, err := strconv.Atoi(nums[1])
+		num, err = strconv.Atoi(lineNums[1])
 		if err != nil {
 			panic(err)
 		}
-		right = append(right, r)
+		right = append(right, num)
 	}
 
 	slices.SortFunc(left, func(i, j int) int {
